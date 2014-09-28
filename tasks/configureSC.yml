@@ -7,23 +7,27 @@
   wait_for: host="{{ hostvars[item]['ansible_' + java_iface]['ipv4']['address'] }}" port=8773 state=started
   with_items: "{{ groups.sc }}"
   tags:
-  - sc_config
+  - configure
+  - scs_ready
 
 - name: Check SC is not set according to logs
   wait_for: path="{{ eucalyptus_cloudoutput_path }}" search_regex="das,overlay"
   tags:
+  - configure
   - sc_config
 
 - name: Configure SC block manager
   shell: source "{{ euca_admin_creds_path }}"/eucarc ; euca-modify-property -p "{{ item['partition'] }}".storage.blockstoragemanager="{{ item['mode'] }}"
   with_items: "{{ sc_clusters }}"
   tags:
+  - configure
   - sc_config
   ignore_errors: yes
 
 - name: Wait for SC to be ENABLED
   pause: prompt="Making sure SC is now set to its block storage - properties can now be changed" seconds=30
   tags:
+  - configure
   - sc_config
 
 - name: Configure the block manager properties
@@ -32,6 +36,7 @@
   - "{{ sc_clusters }}"
   - properties
   tags:
+  - configure
   - sc_config
   ignore_errors: yes
 

@@ -4,31 +4,57 @@
 - include: getCredentials.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - credentials
 
 - include: configureOSG.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - setupOSG
 
 - include: getCredentials.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - credentials
 
 - include: configureSC.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - setup_sc
 
 - include: getCredentials.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - credentials
 
 - include: configureEdge.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - setup_edge
+  when:
+  - networking_mode == "EDGE"
 
 - include: getCredentials.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - credentials
 
 - include: setupImages.yml
   when:
   - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - setup_images

@@ -6,10 +6,11 @@
 - name: Install load-balancer
   shell: source "{{ euca_admin_creds_path }}/eucarc" ;  euca-install-load-balancer --install-default 2>&1 >/dev/null &
   tags:
+  - configure
   - setup_images
 
 - name: Install imaging worker
   shell: source "{{ euca_admin_creds_path }}/eucarc" ;  euca-install-imaging-worker --install-default 2>&1 >/dev/null &
   tags:
+  - configure
   - setup_images
-

@@ -8,26 +8,17 @@
 
 osg_provider_name: walrus
 networking_mode: MANAGED-NOVLAN
+use_vlans; false
 
 ################################################
 #
 # RIAK-CS properties
 #
-riakcs_properties:
+osg_properties:
 - {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
 - {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'riak_akey'}
 - {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'riak_skey'}
 
-
-################################################
-#
-# S3 properties
-#
-
-aws_s3_properties:
-- {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
-- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'riak_akey'}
-- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'riak_skey'}
 
 ###########################################################
 #
@@ -53,7 +44,7 @@ sc_clusters:
 # Configuration files & folders
 #
 
-edge_network_config_file: /root/network.json
+edge_network_config_file: /tmp/network.json
 euca_admin_zip_file: /var/tmp/admin.zip
 euca_admin_creds_path: /var/tmp/creds/
 
