@@ -1,0 +1,49 @@
+---
+# defaults file for eucalyptus-configure
+
+###############################################
+#
+# OSG provider. Values are : walrus,riakcs,s3
+#
+
+osg_provider_name: walrus
+networking_mode: MANAGED-NOVLAN
+
+################################################
+#
+# RIAK-CS properties
+#
+riakcs_properties:
+- {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
+- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'riak_akey'}
+- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'riak_skey'}
+
+
+################################################
+#
+# S3 properties
+#
+
+aws_s3_properties:
+- {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
+- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'riak_akey'}
+- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'riak_skey'}
+
+###########################################################
+#
+# List of all storages (1/az) which contains the list of parameers
+#
+
+sc_clusters:
+- {'partition': 'prc-01', 'mode': 'das', 'properties': [ {'name': 'dasdevice', 'value': 'vg01'}]}
+
+###########################################################
+#
+# Samples
+#
+# sc_clusters:
+# - {'partition': 'prc-01', 'mode': 'das', 'properties': [ {'name': 'dasdevice', 'value': 'vg01'}]}
+# - {'partition': 'prc-02', 'mode': 'das', 'properties': []}
+# - {'partition': 'prc-03', 'mode': 'netapp', 'properties': [{'name':'sanhost', 'value': '10.105.2.103'}, {'name': 'sanuser', 'value': 'root'}, {'name': 'sanpassword', 'value': 'N3t4pp'}]}
+#
+#

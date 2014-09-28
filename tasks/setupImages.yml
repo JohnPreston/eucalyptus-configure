@@ -1,0 +1,15 @@
+#########################################################################3
+#
+# Install default images : loadbalancer and imaging-worker
+#
+
+- name: Install load-balancer
+  shell: source "{{ euca_admin_creds_path }}/eucarc" ;  euca-install-load-balancer --install-default 2>&1 >/dev/null &
+  tags:
+  - setup_images
+
+- name: Install imaging worker
+  shell: source "{{ euca_admin_creds_path }}/eucarc" ;  euca-install-imaging-worker --install-default 2>&1 >/dev/null &
+  tags:
+  - setup_images
+

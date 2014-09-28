@@ -1,0 +1,21 @@
+#########################################################################3
+#
+# Configure the OSG to use defined Object Storage backend
+#
+
+- name: Configure OSG provider
+  shell: source "{{ euca_admin_creds_path }}/eucarc" ; euca-modify-property -p "{{ osg_provider_property }}={{ osg_provider_name }}"
+  tags:
+  - osg_config
+
+- name: Configure RiakCS provider
+  shell: source "{{ euca_admin_creds_path }}/eucarc" ; euca-modify-property -p "{{ item.name }}={{ item.value }}"
+  with_items: "{{ riakcs_properties }}"
+  when:
+  - osg_provider_name == "riakcs"
+
+- name: Configure AWS S3 provider
+  shell: source "{{ euca_admin_creds_path }}/eucarc" ; euca-modify-property -p "{{ item.name }}={{ item.value }}"
+  with_items: "{{ aws_s3_properties }}"
+  when:
+  - osg_provider_name == "s3"

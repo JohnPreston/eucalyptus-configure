@@ -1,0 +1,34 @@
+---
+# tasks file for eucalyptus-configure
+
+- include: getCredentials.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: configureOSG.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: getCredentials.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: configureSC.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: getCredentials.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: configureEdge.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: getCredentials.yml
+  when:
+  - inventory_hostname in groups.clc
+
+- include: setupImages.yml
+  when:
+  - inventory_hostname in groups.clc
