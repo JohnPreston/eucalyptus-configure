@@ -8,7 +8,7 @@
 
 osg_provider_name: walrus
 networking_mode: MANAGED-NOVLAN
-use_vlans; false
+use_vlans: false
 
 ################################################
 #

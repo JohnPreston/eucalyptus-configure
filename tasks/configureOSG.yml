@@ -12,6 +12,7 @@
 - name: Configure OSG provider properties
   shell: source "{{ euca_admin_creds_path }}/eucarc" ; euca-modify-property -p "{{ item.name }}={{ item.value }}"
   with_items: "{{ osg_properties }}"
+  tags:
   - configure
   - osg_config
   when:
