@@ -32,6 +32,9 @@ Role Variables
 | osg_provider_name | Walrus | S3 backend services. Values: walrus,riakcs,s3 | Need the backend-system to be setup
 | osg_properties | [{}] (list of objects) | List of key-value sets describing the backend storage | Back-End system already existing
 | sc_clusters | [{}] | List of sets to configure the backend for EBS services | See examples for SAN  
+| edge_network_config_file | /tmp/network.json | Path the JSON configuration for EDGE networking | None
+| euca_admin_creds_path | /var/tmp/creds | Default folder where will be extracted the Eucalyptus admin credentials | None
+| euca_admin_zip_file | /var/tmp/admin.zip | Default ZIP file location with the Eucalyptus admin credentials | None
 
 Dependencies
 ------------
@@ -58,7 +61,7 @@ Example Playbook
   sc_clusters:
   - {'partition': 'az-01', 'mode': 'das', 'properties': [ {'name': 'dasdevice', 'value': 'vg01'}]}
   - {'partition': 'az-02', 'mode': 'netapp', 'properties': [ {'name':'sanhost', 'value': '1.2.3.4'}, {'name': 'sanuser', 'value': 'root'}, {'name': 'sanpassword', 'value': 'N3t4pp'} ]}
-
+  euca_admin_zip_file: /root/euca-admin.zip
 
 ```
 

@@ -47,3 +47,23 @@ sc_clusters:
 # - {'partition': 'prc-03', 'mode': 'netapp', 'properties': [{'name':'sanhost', 'value': '10.105.2.103'}, {'name': 'sanuser', 'value': 'root'}, {'name': 'sanpassword', 'value': 'N3t4pp'}]}
 #
 #
+
+###########################################################
+#
+# Configuration files & folders
+#
+
+edge_network_config_file: /root/network.json
+euca_admin_zip_file: /var/tmp/admin.zip
+euca_admin_creds_path: /var/tmp/creds/
+
+###########################################################
+#
+# Do not change unless you know what you are doing
+# These values might be used somewhere else !!
+#
+
+eucalyptus_cloudoutput_path: /var/log/eucalyptus/cloud-output.log
+osg_provider_property: objectstorage.providerclient
+edge_network_property: cloud.network.network_configuration
+
