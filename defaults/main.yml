@@ -16,8 +16,8 @@ use_vlans: false
 #
 osg_properties:
 - {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
-- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'riak_akey'}
-- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'riak_skey'}
+- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'access_key'}
+- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'secret_key'}
 
 
 ###########################################################
@@ -25,8 +25,7 @@ osg_properties:
 # List of all storages (1/az) which contains the list of parameers
 #
 
-sc_clusters:
-- {'partition': 'prc-01', 'mode': 'das', 'properties': [ {'name': 'dasdevice', 'value': 'vg01'}]}
+sc_clusters: []
 
 ###########################################################
 #

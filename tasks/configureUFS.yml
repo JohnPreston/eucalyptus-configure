@@ -1,0 +1,20 @@
+################################################################################
+#
+# UFS starup checkings
+#
+
+- name: Wait for UFS 8773 to be networkly started
+  wait_for: host="{{ hostvars[item]['ansible_' + java_iface]['ipv4']['address'] }}" port=8773 state=started
+  with_items:
+  - "{{ groups.ufs }}"
+  tags:
+  - credentials
+  - ufs_ready
+  - configure
+
+- name: Wait for UFS to be UP and detected by CLC from logs
+  wait_for: search_regex="riakcs,ceph-rgw,walrus,s3" path="{{ eucalyptus_cloudoutput_path }}"
+  tags:
+  - credentials
+  - ufs_ready
+  - configure

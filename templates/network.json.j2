@@ -1,0 +1,13 @@
+{"InstanceDnsDomain":
+{{ instance_dns_domain | to_json }},
+
+"InstanceDnsServers":
+{{ instance_dns_servers | to_json }},
+
+"PublicIps": {{ pub_ips | to_json }},
+
+"Subnets": [],
+
+"Clusters":
+{{ clusters | to_json }}
+}

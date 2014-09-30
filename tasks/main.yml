@@ -1,6 +1,14 @@
 ---
 # tasks file for eucalyptus-configure
 
+
+- include: configureUFS.yml
+  when:
+  - inventory_hostname in groups.clc
+  tags:
+  - configure
+  - credentials
+
 - include: getCredentials.yml
   when:
   - inventory_hostname in groups.clc
