@@ -9,6 +9,14 @@
   - configure
   - osg_config
 
+- name: Wait for OSG to be ENABLED
+  pause: prompt="Making sure OSG is now set to its provider - properties can now be changed" seconds=30
+  tags:
+  - configure
+  - osg_config
+  when:
+  - not osg_provider_name == "walrus"
+
 - name: Configure OSG provider properties
   shell: source "{{ euca_admin_creds_path }}/eucarc" ; euca-modify-property -p "{{ item.name }}={{ item.value }}"
   with_items: "{{ osg_properties }}"

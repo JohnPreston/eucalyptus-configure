@@ -4,7 +4,7 @@
 #
 
 - name: Wait for UFS 8773 to be networkly started
-  wait_for: host="{{ hostvars[item]['ansible_' + java_iface]['ipv4']['address'] }}" port=8773 state=started
+  wait_for: host="{{ hostvars[item][hostvars[item]['java_iface']]['ipv4']['address'] }}" port=8773 state=started
   with_items:
   - "{{ groups.ufs }}"
   tags:

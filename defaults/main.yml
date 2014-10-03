@@ -14,11 +14,12 @@ use_vlans: false
 #
 # RIAK-CS properties
 #
-osg_properties:
-- {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
-- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'access_key'}
-- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'secret_key'}
-
+#
+#osg_properties:
+#- {'name': 'objectstorage.s3provider.s3endpoint', 'value': 'http://RIACKS-URL'}
+#- {'name': 'objectstorage.s3provider.s3accesskey', 'value': 'access_key'}
+#- {'name': 'objectstorage.s3provider.s3secretkey', 'value': 'secret_key'}
+#
 
 ###########################################################
 #
