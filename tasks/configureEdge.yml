@@ -3,16 +3,9 @@
 # Configure the Network for EDGE using the JSON file
 #
 
-- name: create the EDGE config
-  template: src=network.json.j2 dest="{{ edge_network_config_file }}"
-  tags:
-  - initialization
-  - configure
-  when:
-  - networking_mode == "EDGE"
-
 - name: Configure Network
-  shell: source "{{ euca_admin_creds_path }}/eucarc" ; euca-modify-property -f "{{ edge_network_property }}={{ edge_network_config_file }}"
+  shell: source "{{ euca_admin_creds_path }}/eucarc" ;
+         euca-modify-property -f "{{ edge_network_property }}={{ edge_network_config_file }}"
   tags:
   - edge_config
   - configure
